@@ -1,0 +1,78 @@
+:root {
+  color-scheme: light;
+  --ink: #142826;
+  --muted: #4b6460;
+  --accent: #12564a;
+  --line: #d6e3dd;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  background: #f3f7f4;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+a { color: inherit; }
+.bar { border-bottom: 1px solid var(--line); background: #fcfefd; }
+.bar-inner {
+  min-height: 66px;
+  max-width: 1060px;
+  margin: auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; }
+.brand-mark { display: grid; place-items: center; width: 28px; height: 28px; color: white; background: var(--accent); border-radius: 7px; }
+.brand-separator { color: #59706b; }
+.privacy { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
+.privacy span { width: 8px; height: 8px; border-radius: 50%; background: #267866; }
+main { max-width: 806px; margin: 0 auto; padding: clamp(30px, 7vw, 70px) 24px 40px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(2rem, 5.4vw, 3.15rem); line-height: 1.07; letter-spacing: -.05em; }
+.intro p { color: var(--muted); line-height: 1.55; margin-top: 15px; max-width: 590px; }
+.workspace {
+  margin-top: 30px;
+  padding: clamp(15px, 4vw, 26px);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 32px #13282309;
+}
+.section-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+h2 { font-size: 1.03rem; }
+.format { color: var(--muted); background: #eaf2ee; border-radius: 6px; padding: 4px 9px; font-size: 13px; }
+.drop-area { position: relative; text-align: center; padding: 28px 12px 25px; border: 1px dashed #779d91; border-radius: 12px; background: #f6faf8; }
+.drop-area.is-dragging { background: #e2f3e9; border-color: var(--accent); }
+.file-symbol { position: relative; display: grid; place-items: center; width: 50px; height: 50px; margin: 0 auto 12px; color: var(--accent); background: #e0efe6; border-radius: 12px; }
+.file-symbol span { width: 19px; height: 24px; border: 2px solid; border-radius: 3px; }
+.file-symbol span::before, .file-symbol span::after { position: absolute; left: 20px; top: 22px; content: ""; width: 10px; height: 2px; background: currentColor; }
+.file-symbol span::after { top: 28px; }
+.drop-title { font-weight: 700; }
+.drop-help { color: var(--muted); font-size: 14px; line-height: 1.4; margin: 6px 0 17px; }
+#file { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.button { min-height: 44px; padding: 9px 16px; display: inline-flex; gap: 8px; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 8px; font-size: .92rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.primary { color: white; background: var(--accent); }
+.primary:hover { background: #0e463b; }
+:focus-visible, #file:focus-visible + label { outline: 3px solid #217462; outline-offset: 4px; }
+.result { margin-top: 16px; padding: 15px 0 0; border-top: 1px solid var(--line); }
+.filename { font-weight: 700; overflow-wrap: anywhere; }
+#status, #error { margin-top: 6px; line-height: 1.5; }
+#status { color: var(--muted); }
+#error { color: #9b281d; }
+#details { color: #6c490c; padding-left: 21px; margin: 9px 0 0; line-height: 1.5; font-size: .9rem; }
+#download { margin-top: 13px; }
+.rules { margin: 29px 1px 0; }
+.rules dl { display: grid; grid-template-columns: 1fr 1fr 1.2fr; margin: 13px 0 10px; }
+.rules dl div { border-top: 1px solid var(--line); padding: 12px 11px 7px 0; }
+.rules dt { font-size: .88rem; font-weight: 700; }
+.rules dd, .rules p { margin: 5px 0 0; color: var(--muted); font-size: .84rem; line-height: 1.55; }
+code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .86em; }
+@media (max-width: 520px) {
+  .bar-inner { min-height: 56px; padding: 0 16px; }
+  main { padding-left: 16px; padding-right: 16px; }
+  .rules dl { grid-template-columns: 1fr; }
+  .privacy { font-size: 12px; }
+}

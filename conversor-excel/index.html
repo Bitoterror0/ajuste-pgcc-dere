@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ajuste os nomes e as descrições de contas em planilhas do PGCC da DeRE no próprio navegador.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Ajustador de planilhas DeRE</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./jszip.min.js"></script>
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="brand" href="./" aria-label="Início do ajustador DeRE"><span class="brand-mark" aria-hidden="true">D</span> DeRE <span class="brand-separator" aria-hidden="true">/</span> PGCC</a>
+      <span class="privacy"><span aria-hidden="true"></span> Processamento local</span>
+    </div>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Ajustador de planilhas DeRE</h1>
+      <p>Selecione o Excel do Plano Geral de Contas Comentado e baixe uma cópia com os textos ajustados.</p>
+    </div>
+
+    <section class="workspace" aria-labelledby="workspace-title">
+      <div class="section-heading">
+        <h2 id="workspace-title">Planilha do PGCC</h2>
+        <span class="format">.xlsx</span>
+      </div>
+      <div class="drop-area" id="drop-area">
+        <span class="file-symbol" aria-hidden="true"><span></span></span>
+        <p class="drop-title">Arraste a planilha para cá</p>
+        <p class="drop-help" id="drop-help">ou escolha um arquivo do seu computador</p>
+        <input id="file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" aria-label="Selecionar planilha Excel" aria-describedby="drop-help">
+        <label class="button primary choose" for="file">Selecionar Excel</label>
+      </div>
+      <div id="result" class="result" hidden>
+        <p id="filename" class="filename"></p>
+        <p id="status" role="status" aria-live="polite"></p>
+        <p id="error" role="alert" hidden></p>
+        <ul id="details" hidden></ul>
+        <a class="button primary" id="download" hidden>Baixar planilha ajustada <span aria-hidden="true">↓</span></a>
+      </div>
+      <noscript><p>Ative o JavaScript do navegador para processar a planilha.</p></noscript>
+    </section>
+
+    <section class="rules" aria-labelledby="rules-title">
+      <h2 id="rules-title">O que é ajustado</h2>
+      <dl>
+        <div><dt>Acentos e cedilha</dt><dd><code>APLICAÇÃO</code> → <code>APLICACAO</code></dd></div>
+        <div><dt>Pontuação e símbolos</dt><dd>Troca por espaços, preservando o sinal contábil <code>( - )</code>.</dd></div>
+        <div><dt>Outros ajustes</dt><dd>Remove <code>º</code>, <code>ª</code> e <code>°</code>. Troca <code>&amp;</code> por <code>E</code>.</dd></div>
+      </dl>
+      <p>O ajuste é aplicado aos campos <code>nomeCta</code> e <code>descCta</code>. O arquivo é processado no seu navegador.</p>
+    </section>
+  </main>
+</body>
+</html>
